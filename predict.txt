@@ -1,0 +1,66 @@
+﻿1	<iden> → [a-z0-9]	a-z0-9
+2	<iden> → ε	$, lt, gt, le, ge, eq, !=, *, +, %, /, /f, ^, -, <comma>, <end_symbol>, <assignment_sym>, <start_method>, <open_parent>, <if>, <repeat>, <until>, int, float, string, character, boolean, <then>
+3	<program> → <start_program> <iden> <start_method> <iden> <open_parent> <close_parent> <stmt_list> <end_method> <end_program>	<start_program>
+4	<declaration> → <datatype> <iden> <end_symbol>	int, float, string, character, boolean
+5	<datatype> → <numeric_type>	int, float
+6	<datatype> → <non_numeric_type>	string, character, boolean
+7	<numeric_type> → int	int
+8	<numeric_type> → float	float
+9	<non_numeric_type> → string	string
+10	<non_numeric_type> → character	character
+11	<non_numeric_type> → boolean	boolean
+12	<stmt> → <if_stmt>	<if>
+13	<stmt> → <while_stmt>	<until>
+14	<stmt> → <repeatuntil_stmt>	<repeat>
+15	<stmt> → <repeat_stmt>	<repeat>
+16	<stmt> → <until_stmt>	<until>
+17	<stmt> → <assignment_stmt>	int, float, string, character, boolean
+18	<stmt> → <declaration>	int, float, string, character, boolean
+19	<stmt> → ε	<end_symbol>, <until>
+20	<if_stmt> → <if> <condition> <then> <stmt>	<if>
+21	<if_stmt> → <if> <boolean_expr> <stmt>	<if>
+22	<while_stmt> → <until> <condition> <stmt>	<until>
+23	<while_stmt> → <until> <boolean_expr> <stmt>	<until>
+24	<repeatuntil_stmt> → <repeat> <until> <condition> <stmt>	<repeat>
+25	<until_stmt> → <until> <condition> <stmt>	<until>
+26	<repeat_stmt> → <repeat> <stmt> <until> <condition>	<repeat>
+27	<assignment_stmt> → <datatype> <iden> <assignment_sym> <value> <end_symbol>	int, float, string, character, boolean
+28	<assignment_stmt> → <datatype> <iden> <assignment_sym> <math_expr> <end_symbol>	int, float, string, character, boolean
+29	<input> → <input_symbol> <iden> <end_symbol>	<input_symbol>
+30	<output> → <print> <string_expr> <end_symbol>	<print>
+31	<string_expr> → <open_parent> <string_value> <close_parent>	<open_parent>
+32	<stmt_list> → <stmt> <end_symbol>	<if>, <repeat>, <until>, int, float, string, character, boolean, <end_symbol>
+33	<stmt_list> → <stmt> <end_symbol> <stmt_list>	<if>, <repeat>, <until>, int, float, string, character, boolean, <end_symbol>
+34	<var_list> → <datatype> <var_list> <end_symbol>	int, float, string, character, boolean
+35	<var_list> → <iden> <comma> <var_list>	a-z0-9, <comma>
+36	<var_list> → <iden>	a-z0-9
+37	<math_expr> → <iden> <operator> <math_expr>	a-z0-9, *, +, %, /, /f, ^, -
+38	<math_expr> → <iden>	a-z0-9
+39	<math_expr> → <numeric_value> <operator> <math_expr>	0-9*, *, +, %, /, /f, ^, -
+40	<math_expr> → <numeric_value>	0-9*
+41	<numeric_value> → [0-9]*	0-9*
+42	<numeric_value> → ε	lt, gt, le, ge, eq, !=, *, +, %, /, /f, ^, -, <end_symbol>, <if>, <repeat>, <until>, int, float, string, character, boolean, <then>
+43	<operator> → <multiplication>	*
+44	<operator> → <division>	/, /f
+45	<operator> → <addition>	+
+46	<operator> → <subtraction>	-
+47	<operator> → <modulo>	%
+48	<operator> → <power>	^
+49	<multiplication> → *	*
+50	<division> → /	/
+51	<division> → /f	/f
+52	<addition> → +	+
+53	<subtraction> → -	-
+54	<modulo> → %	%
+55	<power> → ^	^
+56	<condition> → <rel_expr>	a-z0-9, 0-9*, lt, gt, le, ge, eq, !=
+57	<rel_expr> → <iden> <relational_op> <iden>	a-z0-9, lt, gt, le, ge, eq, !=
+58	<rel_expr> → <numeric_value> <relational_op> <numeric_value>	0-9*, lt, gt, le, ge, eq, !=
+59	<rel_expr> → <numeric_value> <relational_op> <iden>	0-9*, lt, gt, le, ge, eq, !=
+60	<rel_expr> → <iden> <relational_op> <numeric_value>	a-z0-9, lt, gt, le, ge, eq, !=
+61	<relational_op> → lt	lt
+62	<relational_op> → gt	gt
+63	<relational_op> → le	le
+64	<relational_op> → ge	ge
+65	<relational_op> → eq	eq
+66	<relational_op> → !=	!=

@@ -1,0 +1,4 @@
+begin
+    num = 123 + num;
+    x = 1 + 2 * 3;
+end.
