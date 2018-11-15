@@ -1,4 +1,7 @@
-begin
-    num = 123 + num;
-    x = 1 + 2 * 3;
-end.
+start SampleProgram
+ int x is 5.
+ int y is 3.
+ int z.
+
+ int z is x-y.
+end
