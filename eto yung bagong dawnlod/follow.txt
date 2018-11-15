@@ -1,12 +1,19 @@
 <program>	$
-<stmt-list>	<end>
-<stmt-list'>	<end>
-<stmt>	<iden>, <var>, <end>
-<assign>	<iden>, <var>, <end>
-<expr1>	<semi>
-<expr1'>	<semi>
-<expr2>	<plus>, <semi>
-<expr2'>	<plus>, <semi>
-<declaration>	<iden>, <var>, <end>
-<initial_value>	<semi>
-<term>	<times>, <semi>, <plus>
+<declaration>	<end_symbol>, <until>
+<datatype>	<iden>, <numeric_type>, <non_numeric_type>
+<stmt>	<end_symbol>, <until>
+<if_stmt>	<end_symbol>, <until>
+<while_stmt>	<end_symbol>, <until>
+<repeatuntil_stmt>	<end_symbol>, <until>
+<until_stmt>	<end_symbol>, <until>
+<repeat_stmt>	<end_symbol>, <until>
+<assignment_stmt>	<end_symbol>, <until>
+<input>	
+<output>	
+<string_expr>	<end_symbol>
+<stmt_list>	<end_program>
+<var_list>	<end_symbol>
+<math_expr>	<end_symbol>
+<operator>	<iden>, <numeric_value>
+<condition>	<if>, <repeat>, <until>, <numeric_type>, <non_numeric_type>, <then>, <end_symbol>
+<rel_expr>	<if>, <repeat>, <until>, <numeric_type>, <non_numeric_type>, <then>, <end_symbol>

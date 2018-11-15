@@ -1,7 +1,0 @@
-start SampleProgram
- int x is 5.
- int y is 3.
- int z.
-
- int z is x-y.
-end

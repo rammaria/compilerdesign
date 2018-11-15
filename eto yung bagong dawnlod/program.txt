@@ -1,5 +1,7 @@
-begin
-    var num:integer = 10;
+start SampleProgram
+ int x is 5.
+ int y is 3.
+ int z.
 
-    answer = num * 2 + 3;
-end.
+ int z is x-y.
+end

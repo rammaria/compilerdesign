@@ -1,25 +1,47 @@
-<begin>	<begin>
-<end>	<end>
-<period>	<period>
-ε	ε
+﻿<start_program>	<start_program>
 <iden>	<iden>
-<eq>	<eq>
-<semi>	<semi>
-<plus>	<plus>
-<times>	<times>
-<var>	<var>
-<colon>	<colon>
-<type>	<type>
-<const>	<const>
-<program>	<begin>
-<stmt-list'>	ε, <iden>, <var>
-<assign>	<iden>
-<expr1'>	<plus>, ε
-<expr2'>	<times>, ε
-<declaration>	<var>
-<initial_value>	<eq>, ε
-<term>	<iden>, <const>
-<stmt>	<iden>, <var>
-<expr2>	<iden>, <const>
-<expr1>	<iden>, <const>
-<stmt-list>	<iden>, <var>
+<end_program>	<end_program>
+<end_symbol>	<end_symbol>
+<numeric_type>	<numeric_type>
+<non_numeric_type>	<non_numeric_type>
+ε	ε
+<if>	<if>
+<then>	<then>
+<boolean_expr>	<boolean_expr>
+<until>	<until>
+<repeat>	<repeat>
+<assignment_sym>	<assignment_sym>
+<value>	<value>
+<input_symbol>	<input_symbol>
+<print>	<print>
+<open_parent>	<open_parent>
+<string_value>	<string_value>
+<close_parent>	<close_parent>
+<comma>	<comma>
+<numeric_value>	<numeric_value>
+<multiplication>	<multiplication>
+<division>	<division>
+<addition>	<addition>
+<subtraction>	<subtraction>
+<modulo>	<modulo>
+<power>	<power>
+<relational_op>	<relational_op>
+<program>	<start_program>
+<datatype>	<numeric_type>, <non_numeric_type>
+<stmt>	ε, <if>, <repeat>, <until>, <numeric_type>, <non_numeric_type>
+<if_stmt>	<if>
+<while_stmt>	<until>
+<repeatuntil_stmt>	<repeat>
+<until_stmt>	<until>
+<repeat_stmt>	<repeat>
+<input>	<input_symbol>
+<output>	<print>
+<string_expr>	<open_parent>
+<stmt_list>	<end_symbol>, ε, <if>, <repeat>, <until>, <numeric_type>, <non_numeric_type>
+<var_list>	<iden>, <numeric_type>, <non_numeric_type>
+<math_expr>	<iden>, <numeric_value>
+<operator>	<multiplication>, <division>, <addition>, <subtraction>, <modulo>, <power>
+<rel_expr>	<iden>, <numeric_value>
+<declaration>	<numeric_type>, <non_numeric_type>
+<assignment_stmt>	<numeric_type>, <non_numeric_type>
+<condition>	<iden>, <numeric_value>

@@ -1,18 +1,20 @@
-<program> -> <begin> <stmt-list> <end> <period>
-<stmt-list> -> <stmt> <stmt-list'>
-<stmt-list'> -> <stmt> <stmt-list'>
-<stmt-list'> -> EPSILON
-<stmt> -> <assign>
-<stmt> -> <declaration>
-<assign> -> <iden> <eq> <expr1> <semi>
-<expr1> -> <expr2> <expr1'>
-<expr1'> -> <plus> <expr2> <expr1'>
-<expr1'> -> EPSILON
-<expr2> -> <term> <expr2'>
-<expr2'> -> <times> <term> <expr2'>
-<expr2'> -> EPSILON
-<declaration> -> <var> <iden> <colon> <type> <initial_value> <semi>
-<initial_value> -> <eq> <term>
-<initial_value> -> EPSILON
-<term> -> <iden>
-<term> -> <const>
+<program> -> <start_program> <iden> <stmt_list> <end_program>
+<declaration> -> <datatype> <iden> <end_symbol> 
+<datatype> -> <numeric_type> | <non_numeric_type>
+<non_numeric_type> -> string | character | boolean
+<stmt> -> <if_stmt> | <while_stmt> | <repeatuntil_stmt> | <repeat_stmt> | <until_stmt> | <assignment_stmt> | <declaration> | EPSILON
+<if_stmt> -> <if> <condition> <then> <stmt> | <if> <boolean_expr> <stmt>
+<while_stmt> -> <until> <condition> <stmt> | <until> <boolean_expr> <stmt>
+<repeatuntil_stmt> -> <repeat> <until> <condition> <stmt>
+<until_stmt> -> <until> <condition> <stmt>
+<repeat_stmt> -> <repeat> <stmt> <until> <condition>
+<assignment_stmt> -> <datatype> <iden> <assignment_sym> <value> <end_symbol> | <datatype> <iden> <assignment_sym> <math_expr> <end_symbol>
+<input> -> <input_symbol> <iden> <end_symbol>
+<output> -> <print> <string_expr> <end_symbol>
+<string_expr> -> <parenthesis> <string_value> <parenthesis>
+<stmt_list> -> <stmt> <end_symbol> | <stmt> <end_symbol> <stmt_list>
+<var_list> -> <datatype> <var_list> <end_symbol> |  <iden> <comma> <var_list> | <iden>
+<math_expr> -> <iden> <operator> <math_expr> | <iden> | <numeric_value> <operator> <math_expr> | <numeric_value>
+<operator> -> <multiplication> | <division> | <addition> | <subtraction> | <modulo> | <power>
+<condition> -> <rel_expr>
+<rel_expr> -> <iden> <relational_op> <iden> | <numeric_value> <relational_op> <numeric_value> | <numeric_value> <relational_op> <iden> | <iden> <relational_op> <numeric_value>

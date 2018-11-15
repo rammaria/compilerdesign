@@ -1,14 +1,23 @@
-<plus> -> \+
-<times> -> \*
-<eq> -> =
-<const> -> -?[0-9]+
-<semi> -> ;
-<begin> -> begin
-<end> -> end
-<type> -> integer|real
-<var> -> var
-<period> -> \.
-<colon> -> :
+<numeric_type> -> int | float
+<non_numeric_type> -> string | character | boolean
+<multiplication> -> \*
+<division> -> \/ | \/f
+<addition> -> \+
+<subtraction> -> \-
+<modulo> -> \%
+<power> -> \^
+<relational_op> -> lt | gt | le | ge | eq | !=
+<start_program> -> start
+<end_program> ->
+<end_symbol> -> \.
+<if> -> if
+<then> -> then
+<until> -> until
+<repeat> -> repeat
+<assignement_sym> -> is
+<input_symbol> -> read
+<print> -> print
+<parenthesis> -> \"
+<comma> -> \,
+<numeric_value> -> [0-9]*
 <iden> -> [a-z][a-z0-9_]*
-
-
