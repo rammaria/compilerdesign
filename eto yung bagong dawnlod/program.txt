@@ -1,7 +1,13 @@
 start SampleProgram
- int x is 5.
- int y is 3.
- int z.
+ print "This is a sample program".
+ 
+ int choice.
+ print "Enter your sex (1 if boy, 2 if girl)"
+ read choice.
+ 
+ if choice eq 1 then
+  print "Your favorite color is blue".
+ if choice eq 2 then
+  print "Your favorite color is pink".
 
- int z is x-y.
 end
