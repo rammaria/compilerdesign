@@ -1,9 +1,10 @@
-<plus> -> \+
-<times> -> \*
-<eq> -> =
-<const> -> -?[0-9]+?
-<semi> -> ;
-<begin> -> begin
-<end> -> end
-<period> -> \.
 <iden> -> [a-z][a-z0-9_]*?
+<numeric_type> -> int | float
+<numeric_value> -> [0-9]* | EPSILON
+<multiplication> -> *
+<division> -> / | /f
+<addition> -> +
+<subtraction> -> -
+<modulo> -> %
+<power> -> ^
+<relational_op> -> lt | gt | le | ge | eq | !=

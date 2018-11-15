@@ -1,8 +1,6 @@
-<iden> -> [a-z0-9] | EPSILON
 <program> -> <start_program> <iden> <start_method> <iden> <open_parent> <close_parent> <stmt_list> <end_method> <end_program>
-<declaration> -> <datatype> <iden> <end_symbol>  
+<declaration> -> <datatype> <iden> <end_symbol> | <assignment_stmt>
 <datatype> -> <numeric_type> | <non_numeric_type>
-<numeric_type> -> int | float
 <non_numeric_type> -> string | character | boolean
 <stmt> -> <if_stmt> | <while_stmt> | <repeatuntil_stmt> | <repeat_stmt> | <until_stmt> | <assignment_stmt> | <declaration> | EPSILON
 <if_stmt> -> <if> <condition> <then> <stmt> | <if> <boolean_expr> <stmt>
@@ -17,14 +15,6 @@
 <stmt_list> -> <stmt> <end_symbol> | <stmt> <end_symbol> <stmt_list>
 <var_list> -> <datatype> <var_list> <end_symbol> |  <iden> <comma> <var_list> | <iden>
 <math_expr> -> <iden> <operator> <math_expr> | <iden> | <numeric_value> <operator> <math_expr> | <numeric_value>
-<numeric_value> -> [0-9]* | EPSILON
 <operator> -> <multiplication> | <division> | <addition> | <subtraction> | <modulo> | <power>
-<multiplication> -> *
-<division> -> / | /f
-<addition> -> +
-<subtraction> -> -
-<modulo> -> %
-<power> -> ^
 <condition> -> <rel_expr>
 <rel_expr> -> <iden> <relational_op> <iden> | <numeric_value> <relational_op> <numeric_value> | <numeric_value> <relational_op> <iden> | <iden> <relational_op> <numeric_value>
-<relational_op> -> lt | gt | le | ge | eq | !=
