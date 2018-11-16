@@ -1,5 +1,5 @@
-﻿1	<program> → <start_program> <iden> <stmt_list> <end_program>	<start_program>
-2	<declaration> → <datatype> <iden> <end_symbol>	<numeric_type>, <non_numeric_type>
+1	<program> → <start_program> <stmt_list> <end_program>	<start_program>
+2	<declaration> → <datatype> <iden>	<numeric_type>, <non_numeric_type>
 3	<datatype> → <numeric_type>	<numeric_type>
 4	<datatype> → <non_numeric_type>	<non_numeric_type>
 5	<stmt> → <if_stmt>	<if>
@@ -21,7 +21,7 @@
 21	<assignment_stmt> → <datatype> <iden> <assignment_sym> <math_expr> <end_symbol>	<numeric_type>, <non_numeric_type>
 22	<input> → <input_symbol> <iden> <end_symbol>	<input_symbol>
 23	<output> → <print> <string_expr> <end_symbol>	<print>
-24	<string_expr> → <open_parent> <string_value> <close_parent>	<open_parent>
+24	<string_expr> → <parenthesis> <string_value> <parenthesis>	<parenthesis>
 25	<stmt_list> → <stmt> <end_symbol>	<if>, <repeat>, <until>, <numeric_type>, <non_numeric_type>, <end_symbol>
 26	<stmt_list> → <stmt> <end_symbol> <stmt_list>	<if>, <repeat>, <until>, <numeric_type>, <non_numeric_type>, <end_symbol>
 27	<var_list> → <datatype> <var_list> <end_symbol>	<numeric_type>, <non_numeric_type>

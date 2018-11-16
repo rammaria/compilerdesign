@@ -1,7 +1,6 @@
-﻿<start_program>	<start_program>
-<iden>	<iden>
+<start_program>	<start_program>
 <end_program>	<end_program>
-<end_symbol>	<end_symbol>
+<iden>	<iden>
 <numeric_type>	<numeric_type>
 <non_numeric_type>	<non_numeric_type>
 ε	ε
@@ -12,11 +11,11 @@
 <repeat>	<repeat>
 <assignment_sym>	<assignment_sym>
 <value>	<value>
+<end_symbol>	<end_symbol>
 <input_symbol>	<input_symbol>
 <print>	<print>
-<open_parent>	<open_parent>
+<parenthesis>	<parenthesis>
 <string_value>	<string_value>
-<close_parent>	<close_parent>
 <comma>	<comma>
 <numeric_value>	<numeric_value>
 <multiplication>	<multiplication>
@@ -36,7 +35,7 @@
 <repeat_stmt>	<repeat>
 <input>	<input_symbol>
 <output>	<print>
-<string_expr>	<open_parent>
+<string_expr>	<parenthesis>
 <stmt_list>	<end_symbol>, ε, <if>, <repeat>, <until>, <numeric_type>, <non_numeric_type>
 <var_list>	<iden>, <numeric_type>, <non_numeric_type>
 <math_expr>	<iden>, <numeric_value>

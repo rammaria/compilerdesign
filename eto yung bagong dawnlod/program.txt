@@ -1,13 +1,3 @@
-start SampleProgram
- print "This is a sample program".
- 
- int choice.
- print "Enter your sex (1 if boy, 2 if girl)"
- read choice.
- 
- if choice eq 1 then
-  print "Your favorite color is blue".
- if choice eq 2 then
-  print "Your favorite color is pink".
-
+start
+    int
 end

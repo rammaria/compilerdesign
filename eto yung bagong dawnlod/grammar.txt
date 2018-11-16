@@ -1,7 +1,6 @@
-<program> -> <start_program> <iden> <stmt_list> <end_program>
-<declaration> -> <datatype> <iden> <end_symbol> 
+<program> -> <start_program> <stmt_list> <end_program>
+<declaration> -> <datatype> <iden> 
 <datatype> -> <numeric_type> | <non_numeric_type>
-<non_numeric_type> -> string | character | boolean
 <stmt> -> <if_stmt> | <while_stmt> | <repeatuntil_stmt> | <repeat_stmt> | <until_stmt> | <assignment_stmt> | <declaration> | EPSILON
 <if_stmt> -> <if> <condition> <then> <stmt> | <if> <boolean_expr> <stmt>
 <while_stmt> -> <until> <condition> <stmt> | <until> <boolean_expr> <stmt>

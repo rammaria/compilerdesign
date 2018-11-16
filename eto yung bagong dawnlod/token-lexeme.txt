@@ -8,13 +8,13 @@
 <power> -> \^
 <relational_op> -> lt | gt | le | ge | eq | !=
 <start_program> -> start
-<end_program> ->
+<end_program> -> end
 <end_symbol> -> \.
 <if> -> if
 <then> -> then
 <until> -> until
 <repeat> -> repeat
-<assignement_sym> -> is
+<assignment_sym> -> is
 <input_symbol> -> read
 <print> -> print
 <parenthesis> -> \"
