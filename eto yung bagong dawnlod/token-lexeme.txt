@@ -19,7 +19,7 @@
 <le> -> le
 <ge> -> ge
 <eq> -> eq
-<ne> -> !=
+<ne> -> ne
 <if> -> if
 <then> -> then
 <while> -> while

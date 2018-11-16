@@ -1,8 +1,53 @@
 start
-    for x lt 20
-        a is true.
-    read a.
-    x is "test".
-    print "lol".
-    print x.
+string name.
+	print "Please enter your name: ".
+	read name.
+
+	print "Hi,".
+	print name.
+
+	int age.
+	print "Please enter your age:".
+	read age.
+	
+	age is age % 2.
+	
+	if age eq 0 then
+		print "Your age is an even number.".
+	if age ne 0 then
+		print "Your age is an odd number.".
+
+	int i. 
+        i is 1.
+int factorial, number.
+print "Let’s find the factorial of a number (because why not).".
+	print "Enter a number: ".
+	read number.
+	factorial is 1.
+
+	for i le number
+		factorial is factorial * i.
+		i is i + 1.
+		
+print "Factorial of  ".
+print number.
+print " is ".
+print factorial.
+
+	print "This part prints out the sum of the first 10 natural numbers".
+ 
+	int num, count, total.
+ 
+	num is 10.
+	count is 1.
+	total is 0.
+
+	while count le num then
+ 	total is total + count.
+
+	print "Sum of first".
+	print num.
+	print "is: ".
+	print total.
+
 end
