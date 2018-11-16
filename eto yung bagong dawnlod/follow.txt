@@ -1,19 +1,25 @@
 <program>	$
-<declaration>	<end_symbol>, <until>
-<datatype>	<iden>, <numeric_type>, <non_numeric_type>
-<stmt>	<end_symbol>, <until>
-<if_stmt>	<end_symbol>, <until>
-<while_stmt>	<end_symbol>, <until>
-<repeatuntil_stmt>	<end_symbol>, <until>
-<until_stmt>	<end_symbol>, <until>
-<repeat_stmt>	<end_symbol>, <until>
-<assignment_stmt>	<end_symbol>, <until>
-<input>	
-<output>	
-<string_expr>	<end_symbol>
 <stmt_list>	<end_program>
+<stmt_list’>	<end_program>
+<stmt>	<until>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <end_program>
+<declaration>	<until>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <end_program>
 <var_list>	<end_symbol>
-<math_expr>	<end_symbol>
-<operator>	<iden>, <numeric_value>
-<condition>	<if>, <repeat>, <until>, <numeric_type>, <non_numeric_type>, <then>, <end_symbol>
-<rel_expr>	<if>, <repeat>, <until>, <numeric_type>, <non_numeric_type>, <then>, <end_symbol>
+<var_list’>	<end_symbol>
+<var>	<end_symbol>, <assignment_sym>, <comma>
+<data_type>	<iden>
+<assignment>	<until>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <end_program>
+<value>	<end_symbol>
+<expr>	<end_symbol>
+<expr’>	<end_symbol>
+<term>	<lt>, <gt>, <le>, <ge>, <eq>, <ne>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <add>, <minus>, <multiply>, <divide>, <divide_float>, <mod>, <then>, <end_symbol>, <until>, <end_program>
+<operation>	<const>, <iden>
+<string_value>	<end_symbol>
+<if_stmt>	<until>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <end_program>
+<condition>	<then>, <until>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <end_program>
+<boolean_value>	<then>, <end_symbol>
+<relational_op>	<const>, <iden>
+<while_stmt>	<until>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <end_program>
+<repeat_stmt>	<until>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <end_program>
+<for_stmt>	<until>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <end_program>
+<input>	<until>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <end_program>
+<output>	<until>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <end_program>

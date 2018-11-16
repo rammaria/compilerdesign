@@ -1,44 +1,56 @@
 1	<program> → <start_program> <stmt_list> <end_program>	<start_program>
-2	<declaration> → <datatype> <iden>	<numeric_type>, <non_numeric_type>
-3	<datatype> → <numeric_type>	<numeric_type>
-4	<datatype> → <non_numeric_type>	<non_numeric_type>
-5	<stmt> → <if_stmt>	<if>
-6	<stmt> → <while_stmt>	<until>
-7	<stmt> → <repeatuntil_stmt>	<repeat>
-8	<stmt> → <repeat_stmt>	<repeat>
-9	<stmt> → <until_stmt>	<until>
-10	<stmt> → <assignment_stmt>	<numeric_type>, <non_numeric_type>
-11	<stmt> → <declaration>	<numeric_type>, <non_numeric_type>
-12	<stmt> → ε	<end_symbol>, <until>
-13	<if_stmt> → <if> <condition> <then> <stmt>	<if>
-14	<if_stmt> → <if> <boolean_expr> <stmt>	<if>
-15	<while_stmt> → <until> <condition> <stmt>	<until>
-16	<while_stmt> → <until> <boolean_expr> <stmt>	<until>
-17	<repeatuntil_stmt> → <repeat> <until> <condition> <stmt>	<repeat>
-18	<until_stmt> → <until> <condition> <stmt>	<until>
-19	<repeat_stmt> → <repeat> <stmt> <until> <condition>	<repeat>
-20	<assignment_stmt> → <datatype> <iden> <assignment_sym> <value> <end_symbol>	<numeric_type>, <non_numeric_type>
-21	<assignment_stmt> → <datatype> <iden> <assignment_sym> <math_expr> <end_symbol>	<numeric_type>, <non_numeric_type>
-22	<input> → <input_symbol> <iden> <end_symbol>	<input_symbol>
-23	<output> → <print> <string_expr> <end_symbol>	<print>
-24	<string_expr> → <parenthesis> <string_value> <parenthesis>	<parenthesis>
-25	<stmt_list> → <stmt> <end_symbol>	<if>, <repeat>, <until>, <numeric_type>, <non_numeric_type>, <end_symbol>
-26	<stmt_list> → <stmt> <end_symbol> <stmt_list>	<if>, <repeat>, <until>, <numeric_type>, <non_numeric_type>, <end_symbol>
-27	<var_list> → <datatype> <var_list> <end_symbol>	<numeric_type>, <non_numeric_type>
-28	<var_list> → <iden> <comma> <var_list>	<iden>
-29	<var_list> → <iden>	<iden>
-30	<math_expr> → <iden> <operator> <math_expr>	<iden>
-31	<math_expr> → <iden>	<iden>
-32	<math_expr> → <numeric_value> <operator> <math_expr>	<numeric_value>
-33	<math_expr> → <numeric_value>	<numeric_value>
-34	<operator> → <multiplication>	<multiplication>
-35	<operator> → <division>	<division>
-36	<operator> → <addition>	<addition>
-37	<operator> → <subtraction>	<subtraction>
-38	<operator> → <modulo>	<modulo>
-39	<operator> → <power>	<power>
-40	<condition> → <rel_expr>	<iden>, <numeric_value>
-41	<rel_expr> → <iden> <relational_op> <iden>	<iden>
-42	<rel_expr> → <numeric_value> <relational_op> <numeric_value>	<numeric_value>
-43	<rel_expr> → <numeric_value> <relational_op> <iden>	<numeric_value>
-44	<rel_expr> → <iden> <relational_op> <numeric_value>	<iden>
+2	<stmt_list> → <stmt> <stmt_list’>	<if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>
+3	<stmt_list’> → <stmt> <stmt_list’>	<if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>
+4	<stmt_list’> → ε	<end_program>
+5	<stmt> → <declaration>	<int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>
+6	<stmt> → <assignment>	<iden>
+7	<stmt> → <if> <if_stmt>	<if>
+8	<stmt> → <while> <while_stmt>	<while>
+9	<stmt> → <repeat_stmt>	<repeat>
+10	<stmt> → <for_stmt>	<for>
+11	<stmt> → <input>	<read>
+12	<stmt> → <print> <output>	<print>
+13	<declaration> → <data_type> <var_list> <end_symbol>	<int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>
+14	<var_list> → <var> <var_list’>	<iden>
+15	<var_list’> → <comma> <var> <var_list’>	<comma>
+16	<var_list’> → ε	<end_symbol>
+17	<var> → <iden>	<iden>
+18	<data_type> → <int_type>	<int_type>
+19	<data_type> → <float_type>	<float_type>
+20	<data_type> → <char_type>	<char_type>
+21	<data_type> → <string_type>	<string_type>
+22	<data_type> → <boolean_type>	<boolean_type>
+23	<assignment> → <var> <assignment_sym> <value> <end_symbol>	<iden>
+24	<value> → <expr>	<const>, <iden>
+25	<value> → <string_value>	<string>
+26	<value> → <boolean_value>	<true>, <false>
+27	<expr> → <term> <expr’>	<const>, <iden>
+28	<expr’> → <operation> <term> <expr’>	<add>, <minus>, <multiply>, <divide>, <divide_float>, <mod>
+29	<expr’> → ε	<end_symbol>
+30	<term> → <const>	<const>
+31	<term> → <iden>	<iden>
+32	<operation> → <add>	<add>
+33	<operation> → <minus>	<minus>
+34	<operation> → <multiply>	<multiply>
+35	<operation> → <divide>	<divide>
+36	<operation> → <divide_float>	<divide_float>
+37	<operation> → <mod>	<mod>
+38	<string_value> → <string>	<string>
+39	<if_stmt> → <condition> <then> <stmt>	<const>, <iden>
+40	<if_stmt> → <boolean_value> <then> <stmt>	<true>, <false>
+41	<condition> → <term> <relational_op> <term>	<const>, <iden>
+42	<boolean_value> → <true>	<true>
+43	<boolean_value> → <false>	<false>
+44	<relational_op> → <lt>	<lt>
+45	<relational_op> → <gt>	<gt>
+46	<relational_op> → <le>	<le>
+47	<relational_op> → <ge>	<ge>
+48	<relational_op> → <eq>	<eq>
+49	<relational_op> → <ne>	<ne>
+50	<while_stmt> → <condition> <then> <stmt>	<const>, <iden>
+51	<while_stmt> → <boolean_value> <then> <stmt>	<true>, <false>
+52	<repeat_stmt> → <repeat> <stmt> <until> <condition>	<repeat>
+53	<for_stmt> → <for> <term> <relational_op> <term> <stmt>	<for>
+54	<input> → <read> <var> <end_symbol>	<read>
+55	<output> → <string> <end_symbol>	<string>
+56	<output> → <var> <end_symbol>	<iden>

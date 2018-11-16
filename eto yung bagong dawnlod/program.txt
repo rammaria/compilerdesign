@@ -1,3 +1,8 @@
 start
-    int
+    for x lt 20
+        a is true.
+    read a.
+    x is "test".
+    print "lol".
+    print x.
 end

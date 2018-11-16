@@ -1,23 +1,35 @@
-<numeric_type> -> int | float
-<non_numeric_type> -> string | character | boolean
-<multiplication> -> \*
-<division> -> \/ | \/f
-<addition> -> \+
-<subtraction> -> \-
-<modulo> -> \%
-<power> -> \^
-<relational_op> -> lt | gt | le | ge | eq | !=
 <start_program> -> start
 <end_program> -> end
 <end_symbol> -> \.
+<int_type> -> int
+<float_type> -> float
+<char_type> -> char
+<string_type> -> string
+<boolean_type> -> boolean
+<assignment_sym> -> is
+<comma> -> ,
+<add> -> \+
+<minus> -> \-
+<multiply> -> \*
+<divide> -> \/
+<divide_float> -> \/f
+<mod> -> \%
+<lt> -> lt
+<gt> -> gt
+<le> -> le
+<ge> -> ge
+<eq> -> eq
+<ne> -> !=
 <if> -> if
 <then> -> then
-<until> -> until
+<while> -> while
 <repeat> -> repeat
-<assignment_sym> -> is
-<input_symbol> -> read
+<until> -> until
+<for> -> for
+<read> -> read
 <print> -> print
-<parenthesis> -> \"
-<comma> -> \,
-<numeric_value> -> [0-9]*
+<true> -> true
+<false> -> false
+<const> -> [0-9]+
 <iden> -> [a-z][a-z0-9_]*
+<string> -> \".*\"

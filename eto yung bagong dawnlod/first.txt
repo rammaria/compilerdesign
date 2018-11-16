@@ -1,46 +1,61 @@
 <start_program>	<start_program>
 <end_program>	<end_program>
-<iden>	<iden>
-<numeric_type>	<numeric_type>
-<non_numeric_type>	<non_numeric_type>
 ε	ε
 <if>	<if>
-<then>	<then>
-<boolean_expr>	<boolean_expr>
-<until>	<until>
-<repeat>	<repeat>
-<assignment_sym>	<assignment_sym>
-<value>	<value>
-<end_symbol>	<end_symbol>
-<input_symbol>	<input_symbol>
+<while>	<while>
 <print>	<print>
-<parenthesis>	<parenthesis>
-<string_value>	<string_value>
+<end_symbol>	<end_symbol>
 <comma>	<comma>
-<numeric_value>	<numeric_value>
-<multiplication>	<multiplication>
-<division>	<division>
-<addition>	<addition>
-<subtraction>	<subtraction>
-<modulo>	<modulo>
-<power>	<power>
-<relational_op>	<relational_op>
+<iden>	<iden>
+<int_type>	<int_type>
+<float_type>	<float_type>
+<char_type>	<char_type>
+<string_type>	<string_type>
+<boolean_type>	<boolean_type>
+<assignment_sym>	<assignment_sym>
+<const>	<const>
+<add>	<add>
+<minus>	<minus>
+<multiply>	<multiply>
+<divide>	<divide>
+<divide_float>	<divide_float>
+<mod>	<mod>
+<string>	<string>
+<then>	<then>
+<true>	<true>
+<false>	<false>
+<lt>	<lt>
+<gt>	<gt>
+<le>	<le>
+<ge>	<ge>
+<eq>	<eq>
+<ne>	<ne>
+<repeat>	<repeat>
+<until>	<until>
+<for>	<for>
+<read>	<read>
 <program>	<start_program>
-<datatype>	<numeric_type>, <non_numeric_type>
-<stmt>	ε, <if>, <repeat>, <until>, <numeric_type>, <non_numeric_type>
-<if_stmt>	<if>
-<while_stmt>	<until>
-<repeatuntil_stmt>	<repeat>
-<until_stmt>	<until>
+<stmt_list’>	ε, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>
+<stmt>	<if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>
+<var_list’>	<comma>, ε
+<var>	<iden>
+<data_type>	<int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>
+<expr’>	ε, <add>, <minus>, <multiply>, <divide>, <divide_float>, <mod>
+<term>	<const>, <iden>
+<operation>	<add>, <minus>, <multiply>, <divide>, <divide_float>, <mod>
+<string_value>	<string>
+<boolean_value>	<true>, <false>
+<relational_op>	<lt>, <gt>, <le>, <ge>, <eq>, <ne>
 <repeat_stmt>	<repeat>
-<input>	<input_symbol>
-<output>	<print>
-<string_expr>	<parenthesis>
-<stmt_list>	<end_symbol>, ε, <if>, <repeat>, <until>, <numeric_type>, <non_numeric_type>
-<var_list>	<iden>, <numeric_type>, <non_numeric_type>
-<math_expr>	<iden>, <numeric_value>
-<operator>	<multiplication>, <division>, <addition>, <subtraction>, <modulo>, <power>
-<rel_expr>	<iden>, <numeric_value>
-<declaration>	<numeric_type>, <non_numeric_type>
-<assignment_stmt>	<numeric_type>, <non_numeric_type>
-<condition>	<iden>, <numeric_value>
+<for_stmt>	<for>
+<input>	<read>
+<output>	<string>, <iden>
+<declaration>	<int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>
+<var_list>	<iden>
+<assignment>	<iden>
+<expr>	<const>, <iden>
+<condition>	<const>, <iden>
+<value>	<const>, <iden>, <true>, <false>, <string>
+<if_stmt>	<const>, <iden>, <true>, <false>
+<while_stmt>	<const>, <iden>, <true>, <false>
+<stmt_list>	<if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>
