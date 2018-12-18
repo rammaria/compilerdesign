@@ -5,6 +5,7 @@
 <while>	<while>
 <print>	<print>
 <end_symbol>	<end_symbol>
+<comma>	<comma>
 <iden>	<iden>
 <int_type>	<int_type>
 <float_type>	<float_type>
@@ -36,6 +37,7 @@
 <program>	<start_program>
 <stmt_list’>	ε, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>
 <stmt>	<if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>
+<var_list’>	<comma>, ε
 <var>	<iden>
 <data_type>	<int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>
 <expr’>	ε, <add>, <minus>, <multiply>, <divide>, <divide_float>, <mod>
@@ -49,6 +51,7 @@
 <input>	<read>
 <output>	<string>, <iden>
 <declaration>	<int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>
+<var_list>	<iden>
 <assignment>	<iden>
 <expr>	<const>, <iden>
 <condition>	<const>, <iden>

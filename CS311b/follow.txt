@@ -3,7 +3,9 @@
 <stmt_list’>	<end_program>
 <stmt>	<until>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <end_program>
 <declaration>	<until>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <end_program>
-<var>	<end_symbol>, <assignment_sym>
+<var_list>	<end_symbol>
+<var_list’>	<end_symbol>
+<var>	<end_symbol>, <assignment_sym>, <comma>
 <data_type>	<iden>
 <assignment>	<until>, <if>, <while>, <print>, <int_type>, <float_type>, <char_type>, <string_type>, <boolean_type>, <repeat>, <read>, <iden>, <for>, <end_program>
 <value>	<end_symbol>
