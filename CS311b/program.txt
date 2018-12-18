@@ -19,7 +19,8 @@ string name.
 
 	int i. 
         i is 1.
-int factorial, number.
+int factorial.
+int number.
 print "Let’s find the factorial of a number (because why not).".
 	print "Enter a number: ".
 	read number.
@@ -36,7 +37,9 @@ print factorial.
 
 	print "This part prints out the sum of the first 10 natural numbers".
  
-	int num, count, total.
+	int num.
+        int count.
+        int total.
  
 	num is 10.
 	count is 1.

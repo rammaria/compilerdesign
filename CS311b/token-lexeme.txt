@@ -7,7 +7,6 @@
 <string_type> -> string
 <boolean_type> -> boolean
 <assignment_sym> -> is
-<comma> -> ,
 <add> -> \+
 <minus> -> \-
 <multiply> -> \*

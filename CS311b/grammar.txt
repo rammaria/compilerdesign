@@ -4,10 +4,7 @@
 <stmt_list’> -> EPSILON
 <stmt> -> <declaration>
 <stmt> -> <assignment>
-<declaration> -> <data_type> <var_list> <end_symbol>
-<var_list> -> <var> <var_list’>
-<var_list’> -> <comma> <var> <var_list’>
-<var_list’> -> EPSILON
+<declaration> -> <data_type> <var> <end_symbol>
 <var> -> <iden>
 <data_type> -> <int_type>
 <data_type> -> <float_type>
