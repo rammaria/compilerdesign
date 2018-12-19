@@ -690,13 +690,145 @@ class Term_2 extends Term{
     }
 }
 
-// Rule No. 29: <operation> → <add>
-// Rule No. 30: <operation> → <minus>
-// Rule No. 31: <operation> → <multiply
-// Rule No. 32: <operation> → <divide>
-// Rule No. 33: <operation> → <divide_float>
-// Rule No. 34: <operation> → <mod>
 
+abstract class Operation {
+
+    public static Operation construct(Symbol sym) {
+        switch (sym.ruleNo) {
+            case 29:
+                return new Operation_1(sym);
+            case 30:
+                return new Operation_2(sym);
+            case 31:
+                return new Operation_3(sym);
+            case 32:
+                return new Operation_4(sym);
+            case 33:
+                return new Operation_5(sym);
+            case 34:
+                return new Operation_6(sym);
+           
+            default:
+                return null;
+        }
+    }
+
+    public abstract void interpret();
+}
+
+// Rule No. 29: <operation> → <add>
+class Operation_1 extends Operation{
+    String op;
+    
+    public Operation_1(Symbol lhs) {
+        op = lhs.children.get(0).lexeme;
+    }
+    
+    @Override
+    public void interpret() {
+        
+    }
+    
+    @Override
+    public String toString() {
+        return op;
+    }
+}
+
+// Rule No. 30: <operation> → <minus>
+class Operation_2 extends Operation{
+    String op;
+    
+    public Operation_2(Symbol lhs) {
+        op = lhs.children.get(0).lexeme;
+    }
+    
+    @Override
+    public void interpret() {
+        
+    }
+    
+    @Override
+    public String toString() {
+        return op;
+    }
+}
+
+// Rule No. 31: <operation> → <multiply
+class Operation_3 extends Operation{
+    String op;
+    
+    public Operation_3(Symbol lhs) {
+        op = lhs.children.get(0).lexeme;
+    }
+    
+    @Override
+    public void interpret() {
+        
+    }
+    
+    @Override
+    public String toString() {
+        return op;
+    }
+}
+
+// Rule No. 32: <operation> → <divide>
+class Operation_4 extends Operation{
+    String op;
+    
+    public Operation_4(Symbol lhs) {
+        op = lhs.children.get(0).lexeme;
+    }
+    
+    @Override
+    public void interpret() {
+        
+    }
+    
+    @Override
+    public String toString() {
+        return op;
+    }
+}
+
+// Rule No. 33: <operation> → <divide_float>
+class Operation_5 extends Operation{
+    String op;
+    
+    public Operation_5(Symbol lhs) {
+        op = lhs.children.get(0).lexeme;
+    }
+    
+    @Override
+    public void interpret() {
+        
+    }
+    
+    @Override
+    public String toString() {
+        return op;
+    }
+}
+
+// Rule No. 34: <operation> → <mod>
+class Operation_6 extends Operation{
+    String op;
+    
+    public Operation_6(Symbol lhs) {
+        op = lhs.children.get(0).lexeme;
+    }
+    
+    @Override
+    public void interpret() {
+        
+    }
+    
+    @Override
+    public String toString() {
+        return op;
+    }
+}
 
 // Rule No. 35: <string_value> → <string>
 class String_value {
