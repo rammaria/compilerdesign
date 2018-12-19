@@ -112,12 +112,13 @@
 
 package edu.slu.cs311b;
 
+import java.util.Scanner;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Stack;
 
 public class Interpreter {
-
+    
     public static void interpret(Symbol root) {
         Program p = new Program(root);
 
@@ -365,7 +366,6 @@ class Declaration {
     
     public void interpret() {
         Variable v = new Variable(var.iden, data_type.toString(), 1);
-        System.out.println(v.symbolTable.toString());
     }
 }
 
@@ -515,7 +515,6 @@ class Assignment {
     public void interpret() {
         Variable v = Variable.symbolTable.get(var.iden);
         v.value = val.interpret();
-        System.out.println(v.value);
         
     }
 }
@@ -524,7 +523,7 @@ abstract class Value {
     public static Value construct(Symbol sym) {
         switch (sym.ruleNo) {
             case 21:
-//                return new Value_1(sym);
+                return new Value_1(sym);
             case 22:
                 return new Value_2(sym);
             case 23:
@@ -541,17 +540,21 @@ abstract class Value {
 }
 
 // Rule No. 21: <value> → <expr>
-//class Value_1 extends Value {
-//    Expr expr;
-//    public Value_1(Symbol lhs) {
-//        
-//    }
-//    
-//    @Override
-//    public Object interpret() {
-//        return;
-//    }
-//}
+class Value_1 extends Value {
+    Expr expr;
+    public Value_1(Symbol lhs) {
+        expr = new Expr(lhs.children.get(0));
+    }
+    
+    @Override
+    public Object interpret() {
+        return expr.interpret();    
+    }
+    
+    public String toString() {
+        return expr.toString();
+    }
+}
 
 // Rule No. 22: <value> → <string_value>
 class Value_2 extends Value {
@@ -608,7 +611,6 @@ class Expr {
 
         while (!expression.isEmpty()) {
             Symbol sym = expression.removeFirst();
-
             switch (sym.type) {
                 // sym is an operand
                 case "<const>":
@@ -617,8 +619,7 @@ class Expr {
 
                 case "<iden>":
                     var = Variable.symbolTable.get(sym.lexeme);
-
-                    operands.push((Integer) var.value);
+                    operands.push(Integer.parseInt(var.value.toString()));
                     break;
 
                 // sym is an operator
@@ -641,6 +642,10 @@ class Expr {
 
                         case "/":
                             operands.push(operand1 / operand2);
+                            break;
+                            
+                        case "%":
+                            operands.push(operand1 % operand2);
                             break;
                     }
             }
@@ -712,7 +717,7 @@ abstract class Term {
         }
     }
 
-    public abstract void interpret();
+    public abstract Object interpret();
 }
 
 // Rule No. 27: <term> → <const>
@@ -724,8 +729,12 @@ class Term_1 extends Term{
     }
     
     @Override
-    public void interpret() {
-        
+    public Object interpret() {
+        return con;
+    }
+    
+    public String toString() {
+        return con+"";
     }
 }
 
@@ -738,8 +747,14 @@ class Term_2 extends Term{
     }
     
     @Override
-    public void interpret() {
-        
+    public Object interpret() {
+        Variable v = Variable.symbolTable.get(iden);
+        return v.value;
+    }
+    
+    public String toString() {
+        Variable v = Variable.symbolTable.get(iden);
+        return v.value+"";
     }
 }
 
@@ -924,8 +939,10 @@ class If_stmt_1 extends If_stmt{
     }
     
     public void interpret() {
-        condition.interpret();
-        stmt.interpret();
+        if(condition.interpret())
+            stmt.interpret();
+        else
+            return;
     }
 }
         
@@ -949,18 +966,26 @@ class If_stmt_2 extends If_stmt{
 // Rule No. 38: <condition> → <term> <relational_op> <term>
 class Condition {
     Term term1;
-    String relational_op;
+    Relational_op relational_op;
     Term term2;
     
     public Condition(Symbol lhs) {
         term1 = Term.construct(lhs.children.get(0));
-        relational_op = lhs.children.get(1).lexeme;
+        relational_op = Relational_op.construct(lhs.children.get(1));
         term2 = Term.construct(lhs.children.get(2));
     }
     
-    public void interpret() {
-        term1.interpret();
+    public boolean interpret() {
+        switch(relational_op.toString()) {
+            case "lt": return Integer.parseInt(term1.interpret().toString()) < Integer.parseInt(term2.interpret().toString());
+            case "gt": return Integer.parseInt(term1.interpret().toString()) > Integer.parseInt(term2.interpret().toString());
+            case "le": return Integer.parseInt(term1.interpret().toString()) <= Integer.parseInt(term2.interpret().toString());
+            case "ge": return Integer.parseInt(term1.interpret().toString()) >= Integer.parseInt(term2.interpret().toString());
+            case "eq": return Integer.parseInt(term1.interpret().toString()) == Integer.parseInt(term2.interpret().toString());
+            case "ne": return Integer.parseInt(term1.interpret().toString()) != Integer.parseInt(term2.interpret().toString());
+        }
         
+        return false;
     }
 }
 
@@ -1253,14 +1278,17 @@ class For_stmt {
 
 // Rule No. 51: <input> → <read> <var> <end_symbol>
 class Input {
-    String var;
+    
+    Var var;
+    Scanner kbd = new Scanner(System.in);
     
     public Input(Symbol lhs) {
-        var = lhs.children.get(1).lexeme;
+        var = new Var(lhs.children.get(1));
     }
     
     public void interpret() {
-        
+        Variable v = Variable.symbolTable.get(var.iden);
+        v.value = kbd.nextLine();
     }
 }
 
@@ -1291,22 +1319,23 @@ class Output_1 extends Output{
     
     @Override
     public void interpret() {
-//        System.out.println(str);
+        System.out.println(str);
     }
 }
 
 // Rule No. 53: <output> → <var> <end_symbol>
 class Output_2 extends Output{
     
-    String str;
+    Var var;
     
     public Output_2(Symbol lhs) {
-        str = lhs.children.get(0).lexeme;
+        var = new Var(lhs.children.get(0));
     }
     
     @Override
     public void interpret() {
-//        System.out.println(str);
+        Variable v = Variable.symbolTable.get(var.iden);
+        System.out.println(v.value);
     }
 }
 
