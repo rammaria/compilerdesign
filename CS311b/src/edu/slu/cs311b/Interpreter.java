@@ -356,18 +356,31 @@ class Stmt_8 extends Stmt {
 // Rule No. 13: <declaration> → <data_type> <var> <end_symbol>
 class Declaration {
     Data_type data_type;
-    String iden;
+    Var var;
     
     public Declaration(Symbol lhs) {
         data_type = Data_type.construct(lhs.children.get(0));
-        iden = lhs.children.get(1).lexeme;
+        var = new Var(lhs.children.get(1));
     }
     
     public void interpret() {
-        Variable var = new Variable(iden, data_type.toString(), 1);
-//        System.out.println(var.symbolTable.toString());
-        System.out.println(data_type.toString() + " " + iden);
+        Variable v = new Variable(var.iden, data_type.toString(), 1);
+        System.out.println(v.symbolTable.toString());
     }
+}
+
+// Rule No. 14: <var> → <iden>
+class Var {
+    String iden;
+    
+    public Var(Symbol lhs) {
+        iden = lhs.children.get(0).lexeme;
+    }
+    
+    public void interpret() {
+        
+    }
+    
 }
 
 abstract class Data_type {
@@ -491,20 +504,92 @@ class Data_type_5 extends Data_type {
 
 // Rule No. 20: <assignment> → <var> <assignment_sym> <value> <end_symbol>
 class Assignment {
-    String var;
+    Var var;
+    Value val;
     
     public Assignment(Symbol lhs) {
-        
+        var = new Var(lhs.children.get(0));
+        val = Value.construct(lhs.children.get(2));
     }
     
     public void interpret() {
+        Variable v = Variable.symbolTable.get(var.iden);
+        v.value = val.toString();
         
     }
 }
 
+abstract class Value {
+    public static Value construct(Symbol sym) {
+        switch (sym.ruleNo) {
+            case 21:
+//                return new Value_1(sym);
+            case 22:
+                return new Value_2(sym);
+            case 23:
+                return new Value_3(sym);
+                   
+            default:
+                return null;
+        }
+    }
+
+    public abstract Object interpret();
+    
+    public abstract String toString();
+}
+
 // Rule No. 21: <value> → <expr>
-// Rule No. 22: <value> → <string_value>	
-// Rule No. 23: <value> → <boolean_value>	
+//class Value_1 extends Value {
+//    Expr expr;
+//    public Value_1(Symbol lhs) {
+//        
+//    }
+//    
+//    @Override
+//    public Object interpret() {
+//        return;
+//    }
+//}
+
+// Rule No. 22: <value> → <string_value>
+class Value_2 extends Value {
+    
+    String_value string_value;
+    
+    public Value_2(Symbol lhs) {
+        string_value = new String_value(lhs.children.get(0));
+    }
+    
+    @Override
+    public Object interpret() {
+        return string_value;
+    }
+    
+    public String toString() {
+        return string_value.str;
+    }
+}
+
+// Rule No. 23: <value> → <boolean_value>
+class Value_3 extends Value {
+    
+    Boolean_value boolean_value;
+    
+    public Value_3(Symbol lhs) {
+        boolean_value = Boolean_value.construct(lhs.children.get(0));
+    }
+    
+    @Override
+    public Object interpret() {
+        return boolean_value;
+    }
+    
+    public String toString() {
+        return boolean_value.toString();
+    }
+}
+
 // Rule No. 24: <expr> → <term> <expr’>	
 // Rule No. 25: <expr’> → <operation> <term> <expr’>
 // Rule No. 26: <expr’> → ε
@@ -559,7 +644,20 @@ class Term_2 extends Term{
 // Rule No. 32: <operation> → <divide>
 // Rule No. 33: <operation> → <divide_float>
 // Rule No. 34: <operation> → <mod>
+
+
 // Rule No. 35: <string_value> → <string>
+class String_value {
+    String str;
+    
+    public String_value(Symbol lhs) {
+        str = lhs.children.get(0).lexeme;
+    }
+    
+    public void interpret() {
+        
+    }
+}
 
 abstract class If_stmt {
     public static If_stmt construct(Symbol sym) {
@@ -643,20 +741,29 @@ abstract class Boolean_value {
     }
 
     public abstract void interpret();
+    
+    @Override
+    public abstract String toString();
 }
 
 // Rule No. 39: <boolean_value> → <true>
 class Boolean_value_1 extends Boolean_value {
     String val;
-    
+    int rule;
     public Boolean_value_1(Symbol lhs) {
         val = lhs.children.get(0).lexeme;
+        rule = lhs.ruleNo;
     }
     
     @Override
     public void interpret() {
         
     }
+    
+    public String toString() {
+        return val;
+    }
+    
 }
 
 // Rule No. 40: <boolean_value> → <false>
@@ -670,6 +777,10 @@ class Boolean_value_2 extends Boolean_value {
     @Override
     public void interpret() {
         
+    }
+    
+    public String toString() {
+        return val;
     }
 }
 
@@ -694,6 +805,8 @@ abstract class Relational_op {
     }
 
     public abstract void interpret();
+    
+    public abstract String toString();
 }
 
 // Rule No. 41: <relational_op> → <lt>
@@ -708,6 +821,11 @@ class Relational_op_1 extends Relational_op{
     @Override
     public void interpret() {
         
+    }
+    
+    @Override
+    public String toString() {
+        return op;
     }
 }
 
@@ -724,6 +842,11 @@ class Relational_op_2 extends Relational_op{
     public void interpret() {
         
     }
+    
+    @Override
+    public String toString() {
+        return op;
+    }
 }
 
 // Rule No. 43: <relational_op> → <le>
@@ -738,6 +861,11 @@ class Relational_op_3 extends Relational_op{
     @Override
     public void interpret() {
         
+    }
+    
+    @Override
+    public String toString() {
+        return op;
     }
 }
 
@@ -754,6 +882,11 @@ class Relational_op_4 extends Relational_op{
     public void interpret() {
         
     }
+    
+    @Override
+    public String toString() {
+        return op;
+    }
 }
 
 // Rule No. 45: <relational_op> → <eq>
@@ -769,6 +902,11 @@ class Relational_op_5 extends Relational_op{
     public void interpret() {
         
     }
+    
+    @Override
+    public String toString() {
+        return op;
+    }
 }
 
 // Rule No. 46: <relational_op> → <ne>
@@ -783,6 +921,11 @@ class Relational_op_6 extends Relational_op{
     @Override
     public void interpret() {
         
+    }
+    
+    @Override
+    public String toString() {
+        return op;
     }
 }
 
@@ -911,7 +1054,7 @@ class Output_1 extends Output{
     
     @Override
     public void interpret() {
-        System.out.println(str);
+//        System.out.println(str);
     }
 }
 
@@ -926,7 +1069,7 @@ class Output_2 extends Output{
     
     @Override
     public void interpret() {
-        System.out.println(str);
+//        System.out.println(str);
     }
 }
 

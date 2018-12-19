@@ -1,4 +1,6 @@
 start
+string test.
+test is true.
 string name.
 	print "Please enter your name: ".
 	read name.
@@ -52,5 +54,4 @@ print factorial.
 	print num.
 	print "is: ".
 	print total.
-
 end
