@@ -595,6 +595,59 @@ class Value_3 extends Value {
 class Expr {
     Term term;
     Expr_prime expr_prime;
+    LinkedList<Symbol> expression;
+    java.util.Deque<Integer> operands = new LinkedList();
+
+    public Expr(Symbol lhs) {
+        expression = Expression.getExpression(lhs);
+    }
+
+    public int interpret() {
+        Variable var;
+        int result = 0;
+
+        while (!expression.isEmpty()) {
+            Symbol sym = expression.removeFirst();
+
+            switch (sym.type) {
+                // sym is an operand
+                case "<const>":
+                    operands.push(Integer.parseInt(sym.lexeme));
+                    break;
+
+                case "<iden>":
+                    var = Variable.symbolTable.get(sym.lexeme);
+
+                    operands.push((Integer) var.value);
+                    break;
+
+                // sym is an operator
+                default:
+                    int operand2 = operands.pop();
+                    int operand1 = operands.pop();
+
+                    switch (sym.lexeme) {
+                        case "+":
+                            operands.push(operand1 + operand2);
+                            break;
+
+                        case "-":
+                            operands.push(operand1 - operand2);
+                            break;
+
+                        case "*":
+                            operands.push(operand1 * operand2);
+                            break;
+
+                        case "/":
+                            operands.push(operand1 / operand2);
+                            break;
+                    }
+            }
+        }
+
+        return operands.pop();
+    }
     
     
 }
