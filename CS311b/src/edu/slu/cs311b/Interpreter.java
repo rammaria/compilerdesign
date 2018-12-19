@@ -363,9 +363,10 @@ class Declaration {
         iden = lhs.children.get(1).lexeme;
     }
     
-    // TODO
     public void interpret() {
-        
+        Variable var = new Variable(iden, data_type.toString(), 1);
+//        System.out.println(var.symbolTable.toString());
+        System.out.println(data_type.toString() + " " + iden);
     }
 }
 
@@ -390,6 +391,8 @@ abstract class Data_type {
     }
 
     public abstract void interpret();
+    
+    public abstract String toString();
 }
 
 // Rule No. 15:	<data_type> → <int_type>
@@ -403,7 +406,11 @@ class Data_type_1 extends Data_type {
     
     @Override
     public void interpret() {
-        
+        System.out.println(type);
+    }
+    
+    public String toString() {
+        return "int";
     }
 }
 // Rule No. 16:	<data_type> → <float_type>
@@ -418,6 +425,10 @@ class Data_type_2 extends Data_type {
     @Override
     public void interpret() {
         
+    }
+    
+    public String toString() {
+        return "float";
     }
 }
 
@@ -434,6 +445,10 @@ class Data_type_3 extends Data_type {
     public void interpret() {
         
     }
+    
+    public String toString() {
+        return "char";
+    }
 }
 
 // Rule No. 18:	<data_type> → <string_type>
@@ -449,6 +464,10 @@ class Data_type_4 extends Data_type {
     public void interpret() {
         
     }
+    
+    public String toString() {
+        return "String";
+    }
 }
 
 // Rule No. 19:	<data_type> → <boolean_type>
@@ -463,6 +482,10 @@ class Data_type_5 extends Data_type {
     @Override
     public void interpret() {
         
+    }
+    
+    public String toString() {
+        return "boolean";
     }
 }
 
@@ -853,7 +876,7 @@ class Input {
     String var;
     
     public Input(Symbol lhs) {
-        
+        var = lhs.children.get(1).lexeme;
     }
     
     public void interpret() {
@@ -888,7 +911,7 @@ class Output_1 extends Output{
     
     @Override
     public void interpret() {
-        
+        System.out.println(str);
     }
 }
 
@@ -903,7 +926,7 @@ class Output_2 extends Output{
     
     @Override
     public void interpret() {
-        
+        System.out.println(str);
     }
 }
 
