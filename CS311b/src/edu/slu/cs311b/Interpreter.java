@@ -514,7 +514,8 @@ class Assignment {
     
     public void interpret() {
         Variable v = Variable.symbolTable.get(var.iden);
-        v.value = val.toString();
+        v.value = val.interpret();
+        System.out.println(v.value);
         
     }
 }
@@ -563,7 +564,7 @@ class Value_2 extends Value {
     
     @Override
     public Object interpret() {
-        return string_value;
+        return string_value.str;
     }
     
     public String toString() {
@@ -591,8 +592,59 @@ class Value_3 extends Value {
 }
 
 // Rule No. 24: <expr> → <term> <expr’>	
+class Expr {
+    Term term;
+    Expr_prime expr_prime;
+    
+    
+}
+
+abstract class Expr_prime {
+     public static Expr_prime construct(Symbol sym) {
+        switch (sym.ruleNo) {
+            case 27:
+                return new Expr_prime_1(sym);
+            case 28:
+                return new Expr_prime_2(sym);
+                   
+            default:
+                return null;
+        }
+    }
+
+    public abstract void interpret();
+}
+
 // Rule No. 25: <expr’> → <operation> <term> <expr’>
+class Expr_prime_1 extends Expr_prime {
+    Operation operation;
+    Term term;
+    Expr_prime expr_prime;
+    
+    public Expr_prime_1(Symbol lhs) {
+        operation = Operation.construct(lhs.children.get(0));
+        term = Term.construct(lhs.children.get(1));
+        expr_prime = Expr_prime.construct(lhs.children.get(2));
+    }
+    
+    @Override
+    public void interpret() {
+        
+    }
+}
+
 // Rule No. 26: <expr’> → ε
+class Expr_prime_2 extends Expr_prime {
+    public Expr_prime_2(Symbol lhs) {
+        // do nothing
+    }
+    
+    @Override
+    public void interpret() {
+        // do nothing
+    }
+}
+
 
 abstract class Term {
     public static Term construct(Symbol sym) {
